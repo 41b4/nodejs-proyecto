@@ -10,20 +10,34 @@ router.get('/', (req, res, next)=> {
     let limit = 5
     let offset = page*limit
     
-    connection.query('SELECT COUNT(*) as total FROM news',(error, result)=>{
-        let rowsTotal=result[0].total
-        console.log(rowsTotal)
-    })
+    // connection.query('SELECT COUNT(*) as total FROM news',(error, result)=>{
+    //     let rowsTotal=result[0].total
+    //     console.log(rowsTotal)
+    // })
 
-    connection.query(`SELECT * FROM news LIMIT ${limit} OFFSET ${offset}`
+    // connection.query(`SELECT * FROM news LIMIT ${limit} OFFSET ${offset}`
+    // ,(error, result) => {
+    //     // res.send('?page='+encodeURI(page))
+        
+    //     res.render('news/news.ejs',{
+    //         news: result,
+    //         page: Number(page),
+    //         limit: limit,
+    //         offset: offset
+    //     })
+    // })
+    connection.query(`SELECT * FROM news`
     ,(error, result) => {
         // res.send('?page='+encodeURI(page))
-        
-        res.render('news/news.ejs',{
-            news: result,
-            page: Number(page),
-            limit: limit,
-            offset: offset
+        const rows= result.length
+        connection.query(`SELECT * FROM news LIMIT ${limit} OFFSET ${offset}`,(error, result)=>{
+            res.render('news/news.ejs',{
+                news: result,
+                page: Number(page),
+                limit: limit,
+                offset: offset,
+                rows: rows
+            })
         })
     })
 });

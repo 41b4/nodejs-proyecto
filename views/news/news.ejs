@@ -17,7 +17,7 @@
                 <% if (page!=0) {%>
                 <button> <a href="/news?page=<%=page-1%>">atras </a>  </button>
                 <% } %>
-                <p> Esta es la página: <%=page%> offset <%=offset%></p>
+                <p> Esta es la página: <%=page%> rows <%=rows%>  offset <%=offset%></p>
                 <table class="table table-striped table-bordered">
                     <tr>
                         <th>ID</th>
@@ -32,7 +32,7 @@
                         </tr>
                     <% } %>
                 </table>
-                <% if (page=>0) {%>
+                <% if (offset+limit< rows) {%>
                     <button> <a href="/news?page=<%=page+1%>">delante</a>  </button>
                 <% } %>
     
