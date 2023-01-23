@@ -4,55 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>NEWS</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <a href="#" class="navbar-brand mx-auto">NEWS</a>
+    <nav>
+        <a href="/">NEWS</a>
     </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 mt-4 text-center">
+    <section>
+        <div>
+            <div class="contenedor">
                 <% if (page!=0) {%>
-                <button> <a href="/news?page=<%=page-1%>">atras </a>  </button>
+                    <button><a href="/news?page=<%=page-1%>"><i class="fa-solid fa-caret-left"></i></a></button>
                 <% } %>
-                <p> Esta es la página: <%=page%> rows <%=rows%>  offset <%=offset%></p>
-                <table class="table table-striped table-bordered">
-                    <tr>
-                        <th>ID</th>
-                        <th>TITLE</th>
-                        <th>NEWS</th>
-                    </tr>
+                <div class="noticias">
                     <% for(let i=0;i< news.length; i++){ %>
-                        <tr>
-                            <td><%= news[i].id_news %></td>
-                            <td><%= news[i].title %></td>
-                            <td><%= news[i].news %></td>  
-                        </tr>
+                        <div class="noticia">
+                            <div id="id_news"><p><%= news[i].id_news %></p></div>
+                            <h3><%= news[i].title %></h3>
+                            <p><%= news[i].news %></p>  
+                        </div>
                     <% } %>
-                </table>
+                </div>
                 <% if (offset+limit< rows) {%>
-                    <button> <a href="/news?page=<%=page+1%>">delante</a>  </button>
+                    <button> <a href="/news?page=<%=page+1%>"><i class="fa-solid fa-caret-right"></i></a>  </button>
                 <% } %>
     
             </div>
-            <div class="col-md-6 mt-4 card">
-                <form action="/news?page=<%=page%>" method="POST" class="card-body">
-                    <h3 class="card-title">Add news</h3>
-                    <div class="form-group">
-                        <input type="text" name="title" class="form-control" placeholder="News Title" autofocus="autofocus">
+            <div class="new" id="noticiaAdd">
+                
+                <form action="/news?page=<%=page%>" method="POST">
+                    <h3>Add news</h3>
+                    <div>
+                        <input type="text" name="title" placeholder="News Title" autofocus="autofocus">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="news" class="form-control" placeholder="News Content">
+                        <input type="text" name="news" placeholder="News Content">
                     </div>
-                    <input type="submit" value="submit" class="btn btn-primary">
+                    <input type="submit" value="submit">
                 </form>
-    
+            </div>
+            <div class="bot">
+                <button onclick="addNews()"><i class="fa-solid fa-pen"></i></button>
             </div>
         </div>
-    </div>
-    <script>
-    </script>
+    </section>
+    <script src="/javascripts/script.js"></script>
 </body>
 </html>

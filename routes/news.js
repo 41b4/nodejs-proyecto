@@ -7,7 +7,7 @@ const connection = dbConnection()
 router.get('/', (req, res, next)=> {
     // res.render('index', { title: 'Express' });
     let page = req.query.page
-    let limit = 5
+    let limit = 6
     let offset = page*limit
     
     // connection.query('SELECT COUNT(*) as total FROM news',(error, result)=>{
@@ -30,6 +30,12 @@ router.get('/', (req, res, next)=> {
     ,(error, result) => {
         // res.send('?page='+encodeURI(page))
         const rows= result.length
+        if (page> Math.ceil(rows/limit)){
+            res.redirect('news?page='+encodeURIComponent(Math.floor(rows/limit)))
+            console.log(Math.floor(rows/limit))
+        }else if(page<0){
+            res.redirect('news?page=0')
+        }
         connection.query(`SELECT * FROM news LIMIT ${limit} OFFSET ${offset}`,(error, result)=>{
             res.render('news/news.ejs',{
                 news: result,

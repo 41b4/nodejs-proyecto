@@ -1,8 +1,136 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
-a {
-  color: #00B7FF;
+nav {
+  height: 10vh;
+  background-color: #28536B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 15px 15px;
 }
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+section div {
+  position: relative;
+}
+section div .contenedor {
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4rem;
+}
+section div .contenedor button {
+  background-color: black;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+}
+section div .contenedor button a {
+  text-decoration: none;
+}
+section div .contenedor button a i {
+  color: white;
+  font-size: 16px;
+}
+section div .contenedor .noticias {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 30rem;
+  width: 55rem;
+}
+section div .contenedor .noticias .noticia {
+  margin: 1rem;
+  width: 13rem;
+  height: 13rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 1rem;
+}
+section div .contenedor .noticias .noticia #id_news {
+  background: black;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section div .contenedor .noticias .noticia #id_news p {
+  color: white;
+  font-size: 12px;
+}
+section div .new {
+  position: absolute;
+  bottom: 2%;
+  right: 1%;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30rem;
+  height: 15rem;
+  background: black;
+  border-radius: 15px;
+}
+section div .new form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem;
+  width: 100%;
+}
+section div .new form h3 {
+  color: white;
+}
+section div .new form div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section div .new form div input {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  outline: none;
+  border-radius: 15px;
+  width: 80%;
+}
+section div .new form input {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border-radius: 15px;
+  border: none;
+}
+section div .bot {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  padding: 1rem;
+}
+section div .bot button {
+  background-color: black;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+}
+section div .bot button i {
+  color: white;
+  font-size: 20px;
+}/*# sourceMappingURL=style.css.map */
