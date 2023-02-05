@@ -11,15 +11,27 @@
     <title>NEWS</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-<body>
-    <nav>
-        <a href="/">NEWS</a>
-    </nav>
-    <section>
+<body class="theme">
+    <section class="container">
+      <header>
+        <h1>Notes App</h1>
+        <nav class="navbar">
+          <ul class="nav-menu">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+          </ul>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+      </header>
+    <section class="news-container">
         <div>
             <div class="contenedor">
                 <% if (page!=0) {%>
-                    <button><a href="/news?page=<%=page-1%>"><i class="fa-solid fa-caret-left"></i></a></button>
+                    <button><a href="/news?page=<%=page-1%>">Back</a></button>
                 <% } %>
                 <div class="noticias">
                     <% for(let i=0;i< news.length; i++){ %>
@@ -31,7 +43,7 @@
                     <% } %>
                 </div>
                 <% if (offset+limit< rows) {%>
-                    <button> <a href="/news?page=<%=page+1%>"><i class="fa-solid fa-caret-right"></i></a>  </button>
+                    <button> <a href="/news?page=<%=page+1%>">Next</a>  </button>
                 <% } %>
     
             </div>
@@ -45,14 +57,15 @@
                     <div class="form-group">
                         <input type="text" name="news" placeholder="News Content">
                     </div>
-                    <input type="submit" value="submit">
+                    <input type="submit" value="submit" id="submit">
                 </form>
             </div>
             <div class="bot">
-                <button onclick="addNews()"><i class="fa-solid fa-pen"></i></button>
+                <button onclick="addNews()">Add note</button>
             </div>
         </div>
     </section>
-    <script src="/javascripts/script.js"></script>
-</body>
+    </section>
+    <script src="javascripts/script.js"></script>
+  </body>
 </html>

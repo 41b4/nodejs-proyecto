@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "set DEBUG='node-mysql-connector':* & cross-env NODE_ENV=production ./bin/www",
     "devstart": "set DEBUG='node-mysql-connector':* & nodemon ./bin/www"
   },
   "dependencies": {

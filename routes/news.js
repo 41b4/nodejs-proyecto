@@ -1,4 +1,5 @@
 const express = require('express');
+const cookie = require('cookie-parser')
 const router = express.Router();
 const dbConnection = require('../config/dbConnection')
 const connection = dbConnection()
@@ -9,23 +10,6 @@ router.get('/', (req, res, next)=> {
     let page = req.query.page
     let limit = 6
     let offset = page*limit
-    
-    // connection.query('SELECT COUNT(*) as total FROM news',(error, result)=>{
-    //     let rowsTotal=result[0].total
-    //     console.log(rowsTotal)
-    // })
-
-    // connection.query(`SELECT * FROM news LIMIT ${limit} OFFSET ${offset}`
-    // ,(error, result) => {
-    //     // res.send('?page='+encodeURI(page))
-        
-    //     res.render('news/news.ejs',{
-    //         news: result,
-    //         page: Number(page),
-    //         limit: limit,
-    //         offset: offset
-    //     })
-    // })
     connection.query(`SELECT * FROM news`
     ,(error, result) => {
         // res.send('?page='+encodeURI(page))
@@ -61,6 +45,8 @@ router.post('/', function(req, res, next) {
         res.redirect('/news?page='+page)
     })
 });
+// COOKIES
+
 
 
 module.exports = router;

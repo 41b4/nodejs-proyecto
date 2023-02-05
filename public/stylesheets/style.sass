@@ -2,20 +2,135 @@
     margin: 0
     padding: 0
     box-sizing: border-box
-    font-family: 'Inter', sans-serif
+    font-family: 'Nunito Sans', sans-serif
+    text-decoration: none!important
+//themes
+$lightwhite:#F1F3F8
+$eerieblack:#191716
+//notes
+$green:#8CB369
+$yellow:#F4E285
+$orange:#F4A259
+$blue:#5B8E7D
+$red:#BC4B51
 
-nav
-    height: 10vh
-    background-color: #28536B
+//main theme light
+.theme
+    --text: #{$eerieblack}
+    --bg: #{$lightwhite}
+    //dark-theme
+    &--dark
+        --text: #{$lightwhite}
+        --bg: #{$eerieblack}
+
+.container
+    height: 100vh
     display: flex
-    align-items: center
-    justify-content: center
-    border-radius: 0 0 15px 15px
-    a
-        color: white
-        text-decoration: none
-        font-size: 30px
-section
+    flex-direction: column
+    background: var(--bg)
+    header
+        height: 10vh
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        align-items: center
+        h1
+            margin-left: 2rem
+            color: var(--text)
+    .navbar
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
+        margin-right: 1rem
+        .nav-menu
+            display: flex
+            flex-direction: row
+            align-items: center
+            justify-content: space-evenly
+            li
+                list-style: none
+                margin: 0 .5rem 0 .5rem
+                width: 6rem
+                display: flex
+                justify-content: center
+                button
+                    padding: .5rem 1rem
+                    background: $orange
+                    border: none
+                    border-radius: 30px
+                    width: 100%
+                a
+                    color: var(--text)
+                    text-decoration: none
+        .hamburger
+            display: none
+            cursor: pointer
+            span
+                width: 2rem
+                background-color: var(--text)
+                height: .3rem
+                margin: 4px
+                border-radius: 20%
+    .index
+        height: 95vh
+
+    footer
+        height: 5vh
+        display: flex
+        justify-content: flex-end
+        #theme
+            margin-right: 1rem
+            height: 1.5rem
+            width: 2.5rem
+            border: 3px solid var(--text)
+            display: flex
+            flex-direction: row
+            align-items: center
+            justify-content: space-between
+            border-radius: 30px
+            #light
+                background: $lightwhite
+                width: 1rem
+                height: 1rem
+                border: none
+                border-radius: 100%
+            #dark
+                background: $eerieblack
+                width: 1rem
+                height: 1rem
+                border: none
+                border-radius: 100%
+
+@media (max-width: 700px)
+    .hamburger
+        display: flex!important
+        flex-direction: column
+        z-index: 40
+    .hamburger.active
+        span
+           background-color: var(--bg)!important
+    .nav-menu
+        position: fixed
+        top: 0
+        left: -100%
+        flex-direction: column!important
+        width: 100%!important
+        height: 100vh
+        transition: .3s
+    .nav-item
+        width: 11rem!important
+        .nav-link
+            color: var(--bg)!important
+            font-size: 40px
+            font-weight: 600
+            z-index: 3
+    .nav-menu.active
+        left: 0!important
+        top: 0!important
+        z-index: 10
+        background-color: var(--text)     
+.news-container
     div
         position: relative
         .contenedor
@@ -26,15 +141,15 @@ section
             justify-content: center
             padding-bottom: 4rem
             button
-                background-color: black
-                width: 2rem
+                background-color: $orange
+                width: 3rem
                 height: 2rem
                 border-radius: 100%
+                border: none
                 a
                     text-decoration: none
-                    i
-                        color: white
-                        font-size: 16px
+                    color: $eerieblack
+                    font-size: 16px
             .noticias
                 display: flex
                 justify-content: center
@@ -63,8 +178,6 @@ section
                         p
                             color: white
                             font-size: 12px
-        // #noticiaAdd
-        //     display: none
         .new
             position: absolute
             bottom: 2%
@@ -76,7 +189,7 @@ section
             align-items: center
             width: 30rem
             height: 15rem
-            background: black
+            background: var(--text)
             border-radius: 15px
             form
                 display: flex
@@ -86,7 +199,7 @@ section
                 padding: 0rem
                 width: 100%
                 h3
-                    color: white
+                    color: var(--bg)
                 div
                     width: 100%
                     display: flex
@@ -100,19 +213,23 @@ section
                         width: 80%
                 input
                     padding: .5rem 1rem
-                    background-color: white
+                    background-color: $lightwhite
                     border-radius: 15px
                     border: none
+                #submit
+                    background-color: $orange
         .bot
             position: absolute
+            border: none
             bottom: 0%
             right: 0%
             padding: 1rem
             button
-                background-color: black
+                border: none
+                background-color: var(--text)
                 width: 4rem
                 height: 4rem
                 border-radius: 100%
-                i
-                    color: white
-                    font-size: 20px
+                color: var(--bg)
+                font-size: 20px
+                cursor: pointer
