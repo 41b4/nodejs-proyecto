@@ -10,8 +10,12 @@ router.get('/', function(req, res, next) {
 /*COOKIES*/
 router.get('/cookie/:set',(req, res, next)=>{
   console.log(req.params)
-  res.cookie('theme' , req.params.set)
-  res.redirect('/')
+  res.cookie('theme' , req.params.set).redirect('/')
+})
+router.get('/cookie/:set/news',(req, res, next)=>{
+  console.log(req.query.page)
+  console.log(req.params)
+  res.cookie('theme' , req.params.set).redirect('/news?page='+req.query.page)
 })
 
 

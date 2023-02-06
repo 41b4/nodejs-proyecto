@@ -45,7 +45,6 @@ router.post('/', function(req, res, next) {
         res.redirect('/news?page='+page)
     })
 });
-// COOKIES
 
 
 
