@@ -5,11 +5,11 @@ module.exports = () =>{
     if (process.env.NODE_ENV==='production'){
         console.log('estamos en produccion')
         return mysql.createConnection({
-            host: HOST,
             user: USER,
             password: PASSWORD,
-            database: DATABASE,
-            port: PORTDB
+            host: HOST,
+            port: PORTDB,
+            database: DATABASE
         })
     
     }else{
