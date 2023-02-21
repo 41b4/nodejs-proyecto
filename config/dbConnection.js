@@ -1,5 +1,5 @@
 const mysql = require('mysql')
-const { HOST, USER, PASSWORD, DATABASE, PORT }= require('./config')
+const { HOST, USER, PASSWORD, DATABASE, PORTDB }= require('./config')
 const { devHOST, devUSER, devPASSWORD, devDATABASE }= require('./configdev')
 module.exports = () =>{
     if (process.env.NODE_ENV==='production'){
@@ -9,7 +9,7 @@ module.exports = () =>{
             user: USER,
             password: PASSWORD,
             database: DATABASE,
-            port: PORT
+            port: PORTDB
         })
     
     }else{
